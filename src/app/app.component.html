@@ -1,0 +1,48 @@
+<div style="padding: 2%">
+  <img
+    class="img-left"
+    src="https://www.freeiconspng.com/thumbs/skyrim-icon/skyrim-icon--1.png"
+  />
+  <button *ngIf="!generated" (click)="Generate()">Generate Character</button>
+  <button *ngIf="generated" (click)="Reroll()">Reroll Character</button>
+  <img
+    class="img-right"
+    src="https://www.freeiconspng.com/thumbs/skyrim-icon/skyrim-icon--1.png"
+  />
+</div>
+<div *ngIf="generated" class="race">
+  <h2>Looks like you will be a member of the {{ story.race }} race</h2>
+</div>
+<div *ngIf="generated" Id="main-skills">
+  <h2>Main Skills</h2>
+  <ul>
+    <li>{{ story.skills.skill1 }}</li>
+    <li>{{ story.skills.skill2 }}</li>
+    <li>{{ story.skills.skill3 }}</li>
+  </ul>
+</div>
+<div *ngIf="generated" class="first-faction">
+  <h2>The first faction you should join is the {{ story.faction }}</h2>
+</div>
+<div *ngIf="generated" class="after-faction">
+  <h2>
+    After finishing your first faction, you should
+    {{ story.questline }}
+  </h2>
+</div>
+<div *ngIf="generated" class="vocation">
+  <h2>To earn money, you should try your hand at {{ story.occupation }}</h2>
+</div>
+<div *ngIf="generated">
+  <h2>Will you follow the path of the Dragonborn as this character?</h2>
+  <p>You may reroll {{ rerolls }} more times before your fate is decided.</p>
+  <ul>
+    <li class="accept" (click)="onAcceptance()">&#x2713;</li>
+    <li (click)="Reroll()" class="decline">X</li>
+  </ul>
+</div>
+
+<div *ngIf="accepted">
+  <h2 class="content">{{ storyTold }}</h2>
+  <h1>Good Luck Brave Adventurer. Sovngarde Awaits.</h1>
+</div>
